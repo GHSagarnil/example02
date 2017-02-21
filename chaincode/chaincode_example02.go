@@ -71,7 +71,7 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 
 // Transaction makes payment of X units from A to B but TWICE the value
 func (t *SimpleChaincode) invoke2(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
-	fmt.Printf("Running invoke")
+	fmt.Printf("Running invoke2")
 	
 	var A, B string    // Entities
 	var Aval, Bval int // Asset holdings
@@ -215,7 +215,7 @@ func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function stri
 		return t.Init(stub, function, args)
 	} else if function == "invoke2" {
 		fmt.Printf("Function is invoke2")
-		return t.Init(stub, function, args)
+		return t.invoke2(stub, args)
 	}else if function == "delete" {
 		// Deletes an entity from its state
 		fmt.Printf("Function is delete")
@@ -233,6 +233,9 @@ func (t* SimpleChaincode) Run(stub shim.ChaincodeStubInterface, function string,
 		// Transaction makes payment of X units from A to B
 		fmt.Printf("Function is invoke")
 		return t.invoke(stub, args)
+	} else if function == "invoke2" {
+		fmt.Printf("Function is invoke2")
+		return t.invoke2(stub, args)
 	} else if function == "init" {
 		fmt.Printf("Function is init")
 		return t.Init(stub, function, args)

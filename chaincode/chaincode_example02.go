@@ -216,7 +216,7 @@ func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function stri
 	} else if function == "invoke2" {
 		fmt.Printf("Function is invoke2")
 		return t.invoke2(stub, args)
-	}else if function == "delete" {
+	} else if function == "delete" {
 		// Deletes an entity from its state
 		fmt.Printf("Function is delete")
 		return t.delete(stub, args)
